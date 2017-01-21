@@ -1,0 +1,89 @@
+https://www.codeproject.com/Articles/1068287/Part-Building-web-app-using-react-js-express-js-no
+
+# MONGO
+download mongo: https://www.mongodb.com/
+navigate to root of app and run:
+npm install mongoose --python=python2.7 --save
+npm install body-parser --save
+npm install underscore --save
+
+- mongoose is a document object mapper, we will use it to interact with mongodb in our application, we have specified python version explicitly to avoid installation issues you might face, if there are more than one versions of python installed in your system.
+- body-parser module is needed to parse http request's body since express.js does not have an in built support for this. - underscore module has tons of very useful utility functions which make it easy for us to focus on our application's business logic rather than spending too much time writing utility code.
+
+- Add two new directories "data" and "controllers" inside "server" directory of your app. As you might have guessed, "data" directory is going to contain mongoose data models and "controllers" directory will have express routers.
+- In our application there is going to be only one model School so let's add a new file "school.js" in data directory
+
+Create school and controller in data and controllers folders respectively
+
+# Implementing REST endpoints
+Controller:
+- we created a new express router which has only one route "/schools/:id?" and for each HTTP verb we have a seperate request handler.
+- We are going to use only GET, POST and DELETE in our application to keep it simple.
+- Our route also has an optional route parameter which we will need in order to identify specific school while deleting it.
+- To interact with the database for CRUD operation we are using our School model which we had created in the previous step.
+- Also note that in addSchool and deleteSchool functions, we are accessing req.body object which get's populated by the body-parser middleware.
+
+We have made few changes in server.js file, we need body-parser and mongoose modules,
+- we have configured bodyparser to parse json payloads on http requests,
+- also we have mounted our schoolController to /api route, so any request in the form of /api/schools or /api/schools/xxxx will be handled by schoolController.
+- Further we need to connect to mongodb database using mongoose.connect function. schoolfinder is our database name which will get created automatically when you insert your first record.
+
+You must have mongo running: brew services start mongodb
+
+# Plugging REST to react
+
+- We need some library to make ajax calls to backend APIs, I will be using JQuery for this, but you can of cource pick your own favorite.
+- We also need a promise library to avoid nested and painful callbacks. Let's install JQuery and es6-promise modules using npm
+
+npm install jquery --save
+npm install es6-promise --save
+
+Next add a new directory "services" inside "app" directory and add a new file "schoolService.js". This file is going to contain REST APIs calls
+
+Above code has some very familiar JQuery ajax calls, the only thing I want to highlight is, the way we have used Promises. We attach JQuery's success and error handlers to Promise object's resolve and reject callbacks and we return the Promise object itself.
+
+Now let's modify "schoolsStore.js" and "main.jsx" files as shown below so that our app starts using the schoolService to handle data rather showing the dummy:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+asiuhf
