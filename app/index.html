@@ -1,24 +1,31 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Dirty Words</title>
-    <link href="bootstrap.min.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <title>Dirty Words</title>
+      <link href="bootstrap.min.css" rel="stylesheet" />
+      <link href="style.css" rel="stylesheet" />
+  </head>
 
-<body>
-    <div class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Dirty Words</a>
-            </div>
-        </div>
-    </div>
-    <div id="search" class="search"></div>
-    <div id="saved" class="saved"></div>
-    <script src="main.js"></script>
-</body>
+  <body>
+      <div class="navbar navbar-default">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#">Dirty Words</a>
+              </div>
+          </div>
+      </div>
+      <h1>Choose a word to search on urban dictionary:</h1>
+      <form class="word-input-form">
+        <input type="text" id="word-input" />
+        <input type="submit" />
+      </form>
+      <h2 id="message"></h2>
 
+
+      <div id="search" class="search"></div>
+      <div id="saved" class="saved"></div>
+      <script src="main.js"></script>
+  </body>
 </html>

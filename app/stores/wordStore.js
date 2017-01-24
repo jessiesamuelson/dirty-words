@@ -3,10 +3,6 @@ var dispatcher = require('../dispatcher');
 function WordStore() {
   var listeners = [];
   var words = [
-    // 'stuff: usually refers to something sexual.',
-    // 'stuff: everything you can think of',
-    // 'stuff: A girl that means alot to you...',
-    // 'stuff: to stuff = to fuck'
     { name: 'stuff1', description: 'usually refers to something sexual.' },
     { name: 'stuff2', description: 'everything you can think of' },
     { name: 'stuff3', description: 'A girl that means alot to you...' },
@@ -21,7 +17,7 @@ function WordStore() {
     listeners.push(listener);
   }
 
-  function addWords(word) {
+  function addWord(word) {
     words.push(word)
     triggerListeners();
   }

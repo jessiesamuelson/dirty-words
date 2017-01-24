@@ -7,6 +7,7 @@ module.exports = React.createClass({
   render:function(){
     return(
       <div>
+        <h1>Saved Section</h1>
         {
           this.props.words.map(function(s,index){
             return(

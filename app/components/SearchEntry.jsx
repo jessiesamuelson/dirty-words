@@ -5,17 +5,18 @@ var actions = require('../actions/WordActions');
 module.exports = React.createClass({
   addWord: function(e) {
     e.preventDefault();
+    actions.addWord(this.props.info);
     console.log(this.props.info);
-    // actions.addWord(this.props.info);
   },
 
-  render: function() {
-    var input = $('#word-input').val();
-    return (
-      <div className="search-entry">
-        <p>{input}: {this.props.children}</p>
-        <span className='pull-right text-uppercase delete-button' onClick={this.addWord}>&times;</span>
+  render:function(){
+    return(
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          {this.props.info.name}
+          <span className='pull-right text-uppercase delete-button' onClick={this.addWord}>&#43;</span>
+        </div>
+        <div className='panel-body'>{this.props.info.description}</div>
       </div>
     )
-  }
-});
+  }});
