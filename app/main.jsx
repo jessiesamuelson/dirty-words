@@ -1,8 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Search = require('./components/Search.jsx');
-var Saved = require('./components/Saved.jsx');
-var SavedEntry = require('./components/SearchEntry.jsx');
+var SearchList = require('./components/SearchList.jsx');
+var SavedList = require('./components/SavedList.jsx');
 var $ = require('jquery');
 var config = require('./config/config.js');
 var key = config.key;
@@ -13,8 +12,8 @@ var _results = [];
 
 
 function render(){
-  ReactDOM.render(<Search results={_results}/>, document.getElementById('search'));
-  ReactDOM.render(<Saved words={_words}/>, document.getElementById('saved'));
+  ReactDOM.render(<SearchList results={_results}/>, document.getElementById('search'));
+  ReactDOM.render(<SavedList words={_words}/>, document.getElementById('saved'));
 }
 
 wordStore.onChange(function(words){

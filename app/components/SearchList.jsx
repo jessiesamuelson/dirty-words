@@ -1,15 +1,21 @@
 var React = require('react');
-var SearchEntry = require('./SearchEntry.jsx');
+var Entry = require('./Entry.jsx');
+var actions = require('../actions/WordActions');
 
 module.exports = React.createClass({
+  addWord: function(obj) {
+    actions.addWord(obj);
+  },
+
   render:function(){
+    var _this = this;
     return(
       <div>
         <h1>Search Section</h1>
         {
           this.props.results.map(function(s,index){
             return(
-                <SearchEntry info={s} key={'results' + index} />
+                <Entry info={s} key={'results' + index} icon="plus" onClick={_this.addWord} name={s.name}/>
             )
           })
         }

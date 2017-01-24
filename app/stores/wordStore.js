@@ -23,7 +23,6 @@ function WordStore() {
   }
 
   function deleteWord(word) {
-    console.log('word', word);
     var _index;
     words.map(function (s, index) {
       if (s.name === word.name) {
