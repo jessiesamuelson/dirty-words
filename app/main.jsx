@@ -2,13 +2,21 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var SearchList = require('./components/SearchList.jsx');
 var SavedList = require('./components/SavedList.jsx');
+
 var $ = require('jquery');
 var config = require('./config/config.js');
 var key = config.key;
 
 var wordStore = require("./stores/wordStore");
-var _words = wordStore.getWords();
+console.log('wordStore ~~>', wordStore);
+var _words = [];
 var _results = [];
+
+var getWordsCallback = function(words) {
+  _words = words;
+  render();
+}
+
 
 
 function render(){
@@ -16,10 +24,7 @@ function render(){
   ReactDOM.render(<SavedList words={_words}/>, document.getElementById('saved'));
 }
 
-wordStore.onChange(function(words){
-  _words = words;
-  render();
-});
+wordStore.onChange(getWordsCallback);
 
 var input   = $('#word-input').val();
 var message = input ? 'Showing results for "' + input + '"' : ""
@@ -35,8 +40,7 @@ form.onsubmit = function(e) {
     success: function(data) {
       var definitionArray = [];
       for ( var i = 0; i < data.list.length; i++ ) {
-        count = i + 1;
-        var entry = { name: input + count, description: data.list[i].definition}
+        var entry = { name: input, description: data.list[i].definition}
         definitionArray.push(entry);
       }
       console.log(definitionArray);
@@ -46,5 +50,4 @@ form.onsubmit = function(e) {
   })
 };
 
-var savedel = document.getElementById('saved');
 render();

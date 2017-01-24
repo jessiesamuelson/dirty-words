@@ -15,7 +15,7 @@ module.exports = React.createClass({
         {
           this.props.results.map(function(s,index){
             return(
-                <Entry info={s} key={'results' + index} icon="plus" onClick={_this.addWord} name={s.name}/>
+                <Entry info={s} key={'results' + index} icon="fa fa-plus" onClick={_this.addWord} name={s.name}/>
             )
           })
         }

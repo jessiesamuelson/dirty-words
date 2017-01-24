@@ -9,7 +9,9 @@ module.exports = React.createClass({
       <div className='panel panel-default'>
         <div className='panel-heading'>
           {this.props.info.name}
-          <span className='pull-right text-uppercase delete-button' onClick={ e => this.props.onClick(this.props.info)}>{this.props.icon}</span>
+          <span className='pull-right text-uppercase delete-button' onClick={ e => this.props.onClick(this.props.info)}>
+            <i className={this.props.icon} aria-hidden="true"></i>
+          </span>
         </div>
         <div className='panel-body'>{this.props.info.description}</div>
       </div>

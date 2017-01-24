@@ -1,19 +1,20 @@
 var express = require("express");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 var path = require("path");
-// var bodyParser = require("body-parser");
-// var mongoose = require("mongoose");
 
 //controllers
-// var schoolController = require("./controllers/schoolController");
+var schoolController = require("./controllers/wordController");
 
 //Express request pipeline
 var app = express();
 app.use(express.static(path.join(__dirname, "../app/dist")));
-// app.use(bodyParser.json())
-// app.use("/api", schoolController);
+app.use(bodyParser.json())
+app.use("/api", schoolController);
 
 app.listen(7777, function () {
     console.log("Started listening on port", 7777);
 });
+
 // Connect to mongodb database
-// mongoose.connect("mongodb://localhost/schoolfinder");
+mongoose.connect("mongodb://localhost/wordfinder");

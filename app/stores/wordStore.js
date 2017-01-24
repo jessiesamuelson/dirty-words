@@ -1,42 +1,40 @@
 var dispatcher = require('../dispatcher');
+var wordService = require('../services/wordService');
 
 function WordStore() {
   var listeners = [];
-  var words = [
-    { name: 'stuff1', description: 'usually refers to something sexual.' },
-    { name: 'stuff2', description: 'everything you can think of' },
-    { name: 'stuff3', description: 'A girl that means alot to you...' },
-    { name: 'stuff4', description: 'to stuff = to fuck' }
-  ];
 
-  function getWords() {
-    return words;
+  function getWords(cb) {
+    wordService.getWords().then(function(res) {
+      cb(res);
+    })
   }
 
   function onChange(listener) {
+    getWords(listener);
     listeners.push(listener);
   }
 
   function addWord(word) {
-    words.push(word)
-    triggerListeners();
+    wordService.addWord(word).then(function(res) {
+      console.log('res', res);
+      triggerListeners();
+    })
   }
 
   function deleteWord(word) {
-    var _index;
-    words.map(function (s, index) {
-      if (s.name === word.name) {
-        _index = index;
-      }
-    });
-    words.splice(_index, 1);
-    triggerListeners();
+    wordService.deleteWord(word).then(function(res) {
+      console.log('res', res);
+      triggerListeners();
+    })
   }
 
   function triggerListeners() {
-    listeners.forEach(function (listener) {
-      listener(words);
-    });
+    getWords(function(res) {
+      listeners.forEach(function (listener) {
+        listener(res);
+      });
+    })
   }
 
   dispatcher.register(function (payload) {
@@ -54,8 +52,7 @@ function WordStore() {
   });
 
   return {
-      getWords: getWords,
-      onChange: onChange
+    onChange: onChange
   }
 }
 

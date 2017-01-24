@@ -16,7 +16,7 @@ module.exports = React.createClass({
         {
           this.props.words.map(function(s,index){
             return(
-                <Entry info={s} key={'word' + index} icon="minus" onClick={_this.deleteWord}/>
+                <Entry info={s} key={'word' + index} icon="fa fa-minus" onClick={_this.deleteWord}/>
             )
           })
         }
