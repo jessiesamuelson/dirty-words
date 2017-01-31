@@ -16,6 +16,7 @@ function WordStore() {
   }
 
   function addWord(word) {
+    console.log('wordStore addWord');
     wordService.addWord(word).then(function(res) {
       console.log('res', res);
       triggerListeners();
@@ -34,6 +35,14 @@ function WordStore() {
       listeners.forEach(function (listener) {
         listener(res);
       });
+    })
+  }
+
+  function searchWord(word) {
+    console.log('WordStore addWord');
+    wordService.searchWord(word).then(function(res) {
+      console.log('res', res);
+      triggerListeners();
     })
   }
 
