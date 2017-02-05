@@ -31,16 +31,20 @@ class WordSearch extends Component {
         }
         console.log(definitionArray);
         _results = definitionArray;
-        this.render();
+        setTimeout(that.render.bind(that), 1000)
+        console.log('in success');
       }
     })
   }
 
   render() {
+    console.log('in render');
+    console.log('this', this);
+    console.log('_results ~~>', _results);
     return (
       <div id="word-search">
         <h1>Choose a cool word to search on urban dictionary:</h1>
-        <form className="word-input-form" onSubmit={this.submit} >
+        <form className="word-input-form" onSubmit={this.submit.bind(this)} >
           <input type="text" id="word-input" />
           <input type="submit" />
         </form>

@@ -8,6 +8,7 @@ module.exports = React.createClass({
   },
 
   render:function(){
+    console.log('in search list render');
     var _this = this;
     return(
       <div>
