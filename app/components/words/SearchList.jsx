@@ -1,6 +1,6 @@
 var React = require('react');
 var Entry = require('./Entry.jsx');
-var actions = require('../actions/WordActions');
+var actions = require('../../actions/WordActions');
 
 module.exports = React.createClass({
   addWord: function(obj) {
