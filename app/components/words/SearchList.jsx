@@ -1,14 +1,14 @@
-var React = require('react');
-var Entry = require('./Entry.jsx');
-var actions = require('../../actions/WordActions');
+import React, { Component } from 'react';
 
-module.exports = React.createClass({
-  addWord: function(obj) {
+import Entry from './Entry.jsx';
+import actions from '../../actions/WordActions';
+
+class SearchList extends Component {
+  addWord(obj) {
     actions.addWord(obj);
-  },
+  }
 
-  render:function(){
-    console.log('in search list render');
+  render() {
     var _this = this;
     return(
       <div>
@@ -23,4 +23,6 @@ module.exports = React.createClass({
       </div>
     )
   }
-});
+}
+
+export default SearchList;
