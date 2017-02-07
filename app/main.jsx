@@ -7,13 +7,15 @@ import Nav from './components/common/Nav.jsx';
 import Home from './components/common/Home.jsx';
 import About from './components/common/About.jsx';
 import WordSearch from './components/words/WordSearch.jsx';
+import WordSaved from './components/words/WordSaved.jsx';
 
 render (
   <Router history={browserHistory}>
     <Route component={Nav}>
       <Route path="/" component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/words" component={WordSearch}/>
+      <Route path="/wordsearch" component={WordSearch}/>
+      <Route path="/wordsaved" component={WordSaved}/>
     </Route>
   </Router>,
   document.getElementById('container')

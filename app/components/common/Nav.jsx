@@ -15,7 +15,8 @@ class Nav extends Component {
               <ul className="nav navbar-nav">
                 <li><Link to="/" activeClassName="active">Home</Link></li>
                 <li><Link to="/about" activeClassName="active">About</Link></li>
-                <li><Link to="/words" activeClassName="active">Words</Link></li>
+                <li><Link to="/wordsearch" activeClassName="active">Word Search</Link></li>
+                <li><Link to="/wordsaved" activeClassName="active">Word Saved</Link></li>
               </ul>
             </div>
           </div>
