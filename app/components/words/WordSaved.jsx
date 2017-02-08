@@ -4,29 +4,20 @@ import $ from 'jquery';
 
 import SavedList from './SavedList.jsx';
 import wordStore from "../../stores/wordStore";
-
-
+// var wordStore = require('../../stores/wordStore')
 
 
 class WordSaved extends Component {
   constructor(props) {
     super(props);
-    let currentWords = wordStore.getWords(
-      function() {
-        console.log('got words');
-      }
-    );
-    console.log('currentWords ~~>', currentWords);
-    this.state = { words: [] };
+    this.state = { words: [] }
+    var _this = this;
+    wordStore.onChange(getWordsCallback);
+
     function getWordsCallback(words) {
-      this.setState( { words: words } )
+      _this.setState( { words: words } )
+      _this.render();
     }
-
-
-    wordStore.onChange(function( ){
-      getWordsCallback();
-      console.log('onchnge');
-    });
   }
 
   render() {
